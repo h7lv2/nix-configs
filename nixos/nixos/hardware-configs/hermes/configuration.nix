@@ -12,8 +12,8 @@
       ./hardware-configuration.nix
 
       # Unfucks go here
-      ./botches/unfuck-intel-vaapi.nix
-      ./botches/unfuck-flatpak.nix
+      ../../botches/unfuck-intel-vaapi.nix
+      ../../botches/unfuck-flatpak.nix
     ];
 
   # Use the latest kernel 
