@@ -7,3 +7,5 @@ flakes are defined as such:
  - a `home-manager` config, currently mostly unpopulated
 
 the repo also includes a few `botches` to fix some stupid nixos problems, they may or may not work. use at your own peril lmao 
+
+technically speaking the configs are not fully reproducible because `nixos/hardware-configs/secrets.nix` is intentionally missing and one would need to copy it from an already functional machine

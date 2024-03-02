@@ -1,13 +1,17 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./secrets.nix
+  ];
+
   nix.settings.experimental-features = [ 
     "nix-command" 
     "flakes" 
   ];
 
   
-# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -105,6 +109,8 @@
     gnupg
     distrobox
     plymouth
+    zerotierone
+    wl-clipboard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -122,6 +128,9 @@
 
   # Enable flatpak
   services.flatpak.enable = true;
+  services.zerotierone = {
+    enable = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

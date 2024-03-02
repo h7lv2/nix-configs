@@ -5,11 +5,19 @@
   home.homeDirectory = "/home/eli";
 
   home.packages = with pkgs; [
+    # browsers
     firefox
     vivaldi
+
+    # text editors 
     kate
-    syncthingtray
     vscode.fhs
+
+    # daemon-ish stuff?
+    syncthing
+    syncthingtray
+
+    # language servers
     nil
   ];
 
