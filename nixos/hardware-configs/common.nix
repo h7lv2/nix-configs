@@ -88,7 +88,7 @@
   users.users.eli = {
     isNormalUser = true;
     description = "eli";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
   environment.sessionVariables = {
@@ -101,15 +101,27 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Editors
     vim 
     helix
+
+    # Wacky HTTP stuff
     wget
     curl
     git
+
+    # Cryptography
     gnupg
+
+    # Virtualization
     distrobox
-    plymouth
+    virt-manager
+
+    # Networking
     zerotierone
+
+    # Misc
+    plymouth
     wl-clipboard
   ];
 
@@ -140,7 +152,10 @@
 
   # Enable docker
   virtualisation.docker.enable = true;
-
+  # Enable QEMU and libvirtd
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
