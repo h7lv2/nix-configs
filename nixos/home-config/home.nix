@@ -9,6 +9,9 @@
     firefox
     vivaldi
 
+    # launchers
+    gnome.gnome-software
+    
     # text editors 
     kate
     vscode.fhs

@@ -5,8 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   imports =
     [ # Auto-generated, don't touch.
       ./hardware-configuration.nix
@@ -18,7 +16,6 @@
     ];
 
   # Use the latest kernel 
-  # TODO: figure out a way to change that on the other machine 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "quiet" ];
 
@@ -32,4 +29,6 @@
   boot.plymouth.theme = "breeze";
 
   networking.hostName = "hermes"; # Define your hostname.
+
+  virtualisation.waydroid.enable = true;
 }
