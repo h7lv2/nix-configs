@@ -119,6 +119,7 @@
 
     # Networking
     zerotierone
+    (libsForQt5.callPackage ../botches/nekoray.nix {})
 
     # Misc
     plymouth
@@ -126,7 +127,8 @@
   ];
 
   programs.steam.enable = true;
-
+  programs.hyprland.enable = true;
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -147,8 +149,8 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 53317 ];
+  networking.firewall.allowedUDPPorts = [ 53317 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

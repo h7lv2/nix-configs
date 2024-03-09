@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./hyprland.nix
+  ];
+
   home.username = "eli";
   home.homeDirectory = "/home/eli";
 
@@ -10,7 +14,7 @@
     vivaldi
 
     # launchers
-    gnome.gnome-software
+    libsForQt5.discover
     
     # text editors 
     kate
