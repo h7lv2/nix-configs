@@ -2,9 +2,15 @@
 
 {
   imports = [
+    ../botches/unfuck-flatpak.nix
     ./secrets.nix
   ];
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  hardware.firmware = [ pkgs.rtl8761b-firmware ];
+  hardware.xpadneo.enable = true;
+  
   nix.settings.experimental-features = [ 
     "nix-command" 
     "flakes" 
@@ -149,8 +155,8 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 53317 ];
-  networking.firewall.allowedUDPPorts = [ 53317 ];
+  networking.firewall.allowedTCPPorts = [ 47984 47989 47990 48010 53317 ];
+  networking.firewall.allowedUDPPorts = [ 47998 47999 48000 53317 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

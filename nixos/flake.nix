@@ -19,7 +19,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.eli = import ./home.nix;
+          home-manager.users.eli = import ./home-config/home.nix;
         }
       ];
     };

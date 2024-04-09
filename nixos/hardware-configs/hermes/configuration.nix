@@ -11,9 +11,10 @@
 
       # Unfucks go here
       ../../botches/unfuck-intel-vaapi.nix
-      ../../botches/unfuck-flatpak.nix
       ../common.nix
     ];
+
+  hardware.firmware = [ pkgs.rtl8761b-firmware ];
 
   # Use the latest kernel 
   boot.kernelPackages = pkgs.linuxPackages_latest;
