@@ -1,25 +1,26 @@
 {
-  description = "Base module for NixOS system configuration with flakes";
+  description = "Flake freezer for NixOS";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager = { 
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager,  ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, chaotic, ... }: {
     nixosConfigurations.hermes = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./hardware-configs/hermes/configuration.nix
-        
+        configs/hardware/hermes/configuration.nix
+        chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.eli = import ./home-config/home.nix;
+          home-manager.users.eli = import ./configs/home/hermes.nix;
         }
       ];
     };
