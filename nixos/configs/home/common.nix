@@ -8,11 +8,13 @@
   };
 
   home.packages = with pkgs; [
+    clinfo
     element-desktop
-    localsend
     firefox
     floorp
+    glxinfo
     keepassxc
+    localsend
     moonlight-qt
     nekoray
     spotify
@@ -20,8 +22,10 @@
     telegram-desktop
     vesktop
     vscode-fhs
+    vulkan-tools
+    wayland-utils
     yt-dlp
-  ];
+ ];
 
   home.pointerCursor = {
     package = pkgs.kdePackages.breeze;
