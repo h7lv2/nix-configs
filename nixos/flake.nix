@@ -13,7 +13,7 @@
     nixosConfigurations.hermes = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        configs/hardware/hermes/configuration.nix
+        ./configs/hardware/hermes/configuration.nix
         chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
         {
@@ -27,7 +27,7 @@
     nixosConfigurations.zeus = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        configs/hardware/zeus/configuration.nix
+        ./configs/hardware/zeus/configuration.nix
         chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
         {
