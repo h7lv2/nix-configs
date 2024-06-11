@@ -9,13 +9,28 @@
 
   home.packages = with pkgs; [
     element-desktop
+    localsend
     firefox
+    floorp
     keepassxc
     moonlight-qt
+    nekoray
+    spotify
     syncthingtray
+    telegram-desktop
     vesktop
+    vscode-fhs
     yt-dlp
   ];
+
+  home.pointerCursor = {
+    package = pkgs.kdePackages.breeze;
+    gtk.enable = true;
+    x11.enable = true;
+    
+    name = "breeze_cursors";
+    size = 24;
+  };
 
   programs.git = {
     enable = true;

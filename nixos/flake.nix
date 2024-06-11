@@ -24,5 +24,20 @@
         }
       ];
     };
+    nixosConfigurations.zeus = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        configs/hardware/zeus/configuration.nix
+        chaotic.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.eli = import ./configs/home/zeus.nix;
+        }
+      ];
+    };
+
   };
 }

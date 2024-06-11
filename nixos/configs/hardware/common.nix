@@ -7,10 +7,29 @@
 
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.auto-optimise-store = true;
   nixpkgs.config.allowUnfree = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "14d";
+    randomizedDelaySec = "6h";
+    persistent = true;
+    options = "--delete-older-than 7d";
+  };
   
   # Use a different kernel
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
+
+
+  # Pretty boot!
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "bgrt";
+  boot.initrd.systemd.enable = true;
+  boot.initrd.verbose = false;
+  boot.consoleLogLevel = 0;
+  boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+  console.earlySetup = true;  
 
   # Networking settings
   time.timeZone = "Europe/Moscow";
@@ -54,6 +73,16 @@
   services.zerotierone.enable = true;
   
   programs.dconf.enable = true; # because gtk is just quirky and special
+  programs.steam = {
+    enable = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
+    extraPackages = with pkgs; [
+      mangohud
+    ];
+    remotePlay.openFirewall = true;
+  };
   environment.systemPackages = with pkgs; [
     # Development
     wget
