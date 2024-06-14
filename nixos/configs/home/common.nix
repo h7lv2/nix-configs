@@ -16,6 +16,7 @@
     keepassxc
     localsend
     moonlight-qt
+    obs-studio
     nekoray
     spotify
     syncthingtray

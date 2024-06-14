@@ -32,6 +32,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    sunshine = pkgs.sunshine.override {
+      cudaSupport = true;
+    };
+  };
+
+  services.sunshine = {
+    enable = true;
+    capSysAdmin = true;
+    autoStart = true;
+  };
+
   networking.hostName = "zeus"; # Define your hostname.
   system.stateVersion = "24.05"; # Did you read the comment?
 

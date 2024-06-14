@@ -8,4 +8,17 @@
   home.packages = with pkgs; [
     xivlauncher
   ];
+
+  # systemd.user.enable = true;
+  # systemd.user = {
+  #   services.sunshine = {
+  #     enable = true;
+      
+  #     Description = "Sunshine streaming service";
+  #     After = [ "graphical.target "];
+  #     Script = "${config.security.wrapperDir}/sunshine";
+  #     Restart = "on-failure";
+  #     RestartSec = "5s";
+  #   };
+  # };
 }

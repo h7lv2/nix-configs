@@ -53,6 +53,9 @@
   virtualisation.libvirtd.enable = true;
 
   # Services and apps
+  services.avahi.publish.enable = true;
+  services.avahi.publish.userServices = true;
+  
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
