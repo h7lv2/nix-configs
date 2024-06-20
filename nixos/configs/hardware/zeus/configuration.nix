@@ -31,6 +31,10 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [
+    "nvidia.NVreg_EnableGpuFirmware=0"
+  ];
+
 
   nixpkgs.config.packageOverrides = pkgs: {
     sunshine = pkgs.sunshine.override {

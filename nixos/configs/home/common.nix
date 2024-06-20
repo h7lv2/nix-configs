@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     clinfo
+    chromium
     element-desktop
     firefox
     # floorp

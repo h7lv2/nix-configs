@@ -101,5 +101,6 @@
 
     # Misc
     wl-clipboard
+    htop
   ];  
 }
