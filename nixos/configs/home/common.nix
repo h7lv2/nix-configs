@@ -11,7 +11,7 @@
     clinfo
     element-desktop
     firefox
-    floorp
+    # floorp
     glxinfo
     keepassxc
     localsend

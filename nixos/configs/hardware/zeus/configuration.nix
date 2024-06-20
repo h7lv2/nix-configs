@@ -38,6 +38,11 @@
     };
   };
 
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "eli";
+  };
+
   services.sunshine = {
     enable = true;
     capSysAdmin = true;

@@ -41,6 +41,7 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   hardware.firmware = [ pkgs.rtl8761b-firmware ];
+  hardware.xpadneo.enable = true;
 
   # User settings
   users.users.eli = {
