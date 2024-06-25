@@ -20,6 +20,9 @@
     ];
   };
 
+  # Enable waydroid
+  # virtualisation.waydroid.enable = true;
+
   networking.hostName = "hermes";
 
   system.stateVersion = "24.05";

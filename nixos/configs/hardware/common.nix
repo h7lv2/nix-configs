@@ -74,7 +74,15 @@
   
   services.openssh.enable = true;
   services.printing.enable = true;
-  services.zerotierone.enable = true;
+  services.zerotierone = {
+    enable = true;
+    localConf = { 
+      settings = { 
+        softwareUpdate = "disable";
+      };
+    };
+  };
+
   
   programs.dconf.enable = true; # because gtk is just quirky and special
   programs.steam = {
