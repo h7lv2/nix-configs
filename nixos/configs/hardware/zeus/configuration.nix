@@ -40,6 +40,8 @@
     };
   };
 
+  virtualisation.virtualbox.host.enable = true;
+
   services.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "eli";
