@@ -52,6 +52,7 @@
   # Virtualisation settings
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.vmware.host.enable = true;
 
   # Services and apps
   services.avahi.publish.enable = true;
