@@ -74,14 +74,25 @@
   
   services.openssh.enable = true;
   services.printing.enable = true;
+<<<<<<< HEAD
   services.zerotierone = { 
     enable = true;
     localConf = {
       settings = {
+=======
+  services.zerotierone = {
+    enable = true;
+    localConf = { 
+      settings = { 
+>>>>>>> refs/remotes/origin/main
         softwareUpdate = "disable";
       };
     };
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main
   
   programs.dconf.enable = true; # because gtk is just quirky and special
   programs.steam = {

@@ -15,6 +15,7 @@
     floorp
     glxinfo
     keepassxc
+    krita
     localsend
     moonlight-qt
     obs-studio
