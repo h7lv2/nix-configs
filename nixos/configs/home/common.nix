@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     clinfo
     chromium
+    cosmic-store
     element-desktop
     firefox
     floorp
