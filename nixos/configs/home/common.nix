@@ -8,8 +8,8 @@
   };
 
   home.packages = with pkgs; [
-    clinfo
     chromium
+    clinfo
     cosmic-store
     element-desktop
     firefox
@@ -19,8 +19,9 @@
     krita
     localsend
     moonlight-qt
-    obs-studio
     nekoray
+    nil
+    obs-studio
     spotify
     syncthingtray
     telegram-desktop
@@ -49,7 +50,6 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    extraPackages = [ pkgs.nil ];
     settings = {
       theme = "onedark";
       editor = {
