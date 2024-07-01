@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -21,7 +21,8 @@
   };
 
   # Enable waydroid
-  # virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = true;
+  systemd.services.waydroid-container.wantedBy = lib.mkForce [];
 
   networking.hostName = "hermes";
 
