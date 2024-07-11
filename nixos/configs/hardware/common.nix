@@ -36,6 +36,9 @@
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 22000 47984 47989 47990 48010 53317 ];
   networking.firewall.allowedUDPPorts = [ 22000 47998 47999 48000 48010 53317 ];
+  networking.hosts = {
+    "127.0.0.1" = [ "mwlogin.net" ];
+  };
   
   # Hardware settings
   hardware.bluetooth.enable = true;
@@ -62,6 +65,42 @@
   services.desktopManager.plasma6.enable = true;
    
   services.flatpak.enable = true;
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = [ "ro" "resolve-symlinks" "x-gvfs-hide" ];
+    };
+    aggregatedIcons = pkgs.buildEnv {
+      name = "system-icons";
+      paths = with pkgs; [
+        #libsForQt5.breeze-qt5  # for plasma
+        kdePackages.breeze
+        kdePackages.breeze-gtk
+        # gnome.gnome-themes-extra
+      ];
+      pathsToLink = [ "/share/icons" ];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.packages;
+      pathsToLink = [ "/share/fonts" ];
+    };
+  in {
+    "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
+    "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
+  };
+
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-emoji
+      noto-fonts-cjk
+    ];
+  };
+
   
   services.pipewire = {
     enable = true;
