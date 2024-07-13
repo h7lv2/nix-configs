@@ -30,6 +30,7 @@
     vulkan-tools
     wayland-utils
     yt-dlp
+    zed-editor
  ];
 
   home.pointerCursor = {
