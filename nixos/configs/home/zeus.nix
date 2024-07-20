@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     xivlauncher
+    protonup-qt
   ];
 
   # systemd.user.enable = true;
