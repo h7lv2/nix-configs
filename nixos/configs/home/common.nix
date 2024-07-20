@@ -13,6 +13,7 @@
     cosmic-store
     element-desktop
     firefox
+    firefoxpwa
     floorp
     glxinfo
     keepassxc
@@ -31,7 +32,14 @@
     wayland-utils
     yt-dlp
     zed-editor
- ];
+  ];
+
+  programs.firefox.package = pkgs.firefox.override {
+    nativeMessagingHosts = with pkgs; [
+      firefoxpwa
+      kdePackages.plasma-browser-integration
+    ];
+  };
 
   home.pointerCursor = {
     package = pkgs.kdePackages.breeze;
