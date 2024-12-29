@@ -8,9 +8,7 @@
   };
 
   home.packages = with pkgs; [
-    chromium
     clinfo
-    cosmic-store
     element-desktop
     firefox
     firefoxpwa
@@ -31,7 +29,6 @@
     vulkan-tools
     wayland-utils
     yt-dlp
-    zed-editor
   ];
 
   programs.firefox.package = pkgs.firefox.override {
@@ -48,12 +45,6 @@
     
     name = "breeze_cursors";
     size = 24;
-  };
-
-  programs.git = {
-    enable = true;
-    userEmail = "xolagix@outlook.com";
-    userName = "halva (h7lv2)";
   };
 
   programs.helix = {
@@ -92,6 +83,6 @@
   #   };
   # };
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 }

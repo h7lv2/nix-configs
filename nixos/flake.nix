@@ -19,17 +19,17 @@
   };
 
   outputs = { self, nixpkgs, home-manager, chaotic, ... }: {
-    nixosConfigurations.hermes = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.eurydice = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configs/hardware/hermes/configuration.nix
+        ./configs/hardware/eurydice/configuration.nix
         chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.eli = import ./configs/home/hermes.nix;
+          home-manager.users.eli = import ./configs/home/eurydice.nix;
         }
       ];
     };
