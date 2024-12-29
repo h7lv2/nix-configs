@@ -85,7 +85,7 @@
     "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
     "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
   };
-  services.resolved.enable = false;
+  services.resolved.enable = true;
 
   fonts = {
     fontDir.enable = true;
