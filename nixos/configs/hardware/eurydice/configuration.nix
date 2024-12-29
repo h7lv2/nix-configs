@@ -7,25 +7,25 @@
       ./hardware-configuration.nix
     ];
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   powerManagement.enable = true;
+  #   powerManagement.finegrained = false;
+  #   open = false;
+  #   nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    prime = {
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:4:0:0";
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-    };
-  };
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #   prime = {
+  #     intelBusId = "PCI:0:2:0";
+  #     nvidiaBusId = "PCI:4:0:0";
+  #     offload = {
+  #       enable = true;
+  #       enableOffloadCmd = true;
+  #     };
+  #   };
+  # };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -41,11 +41,11 @@
   };
 
   # Enable waydroid
-  virtualisation.waydroid.enable = true;
-  systemd.services.waydroid-container.wantedBy = lib.mkForce [];
+  # virtualisation.waydroid.enable = true;
+  # systemd.services.waydroid-container.wantedBy = lib.mkForce [];
 
   networking.hostName = "eurydice";
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
 
