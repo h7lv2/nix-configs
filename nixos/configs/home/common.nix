@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     clinfo
+    discord-canary
     element-desktop
     firefox
     firefoxpwa
@@ -24,7 +25,6 @@
     spotify
     syncthingtray
     telegram-desktop
-    vesktop
     vscode-fhs
     vulkan-tools
     wayland-utils
