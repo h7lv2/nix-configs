@@ -9,6 +9,7 @@
 
   home.packages = with pkgs; [
     clinfo
+    bitwarden-desktop
     discord-canary
     element-desktop
     firefox
