@@ -17,7 +17,6 @@
   # Use a different kernel
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
-
   # Pretty boot!
   boot.plymouth.enable = true;
   boot.plymouth.theme = "bgrt";
@@ -26,6 +25,10 @@
   boot.consoleLogLevel = 0;
   boot.kernelParams = [ "quiet" "udev.log_level=0" ];
   console.earlySetup = true;  
+
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_unprivileged_port_start" = 0;
+  };
 
   # Networking settings
   time.timeZone = "Europe/Moscow";
@@ -44,12 +47,18 @@
   # User settings
   users.users.eli = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "podman" ];
   };
 
-  # Virtualisation settings
-  virtualisation.podman.enable = true;
-
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+  
   # Services and apps
   services.avahi.publish.enable = true;
   services.avahi.publish.userServices = true;
