@@ -11,6 +11,7 @@
     clinfo
     bitwarden-desktop
     discord-canary
+    dosbox-x
     element-desktop
     firefox
     firefoxpwa
