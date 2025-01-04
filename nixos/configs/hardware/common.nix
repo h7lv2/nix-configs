@@ -34,7 +34,7 @@
 
   # Networking settings
   time.timeZone = "Europe/Moscow";
-  network = {
+  networking = {
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 22000 47984 47989 47990 48010 53317 ];
     firewall.allowedUDPPorts = [ 22000 47998 47999 48000 48010 53317 ];
