@@ -46,7 +46,7 @@
   # virtualisation.waydroid.enable = true;
   # systemd.services.waydroid-container.wantedBy = lib.mkForce [];
 
-  networking.hostName = "eurydice.tartarus";
+  networking.hostName = "eurydice";
 
   system.stateVersion = "24.11";
 }
