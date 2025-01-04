@@ -6,24 +6,26 @@
   nix.settings.auto-optimise-store = true;
   nixpkgs.config.allowUnfree = true;
 
-  # nix.gc = {
-  #   automatic = true;
-  #   dates = "14d";
-  #   randomizedDelaySec = "6h";
-  #   persistent = true;
-  #   options = "--delete-older-than 7d";
-  # };
+  nix.gc = {
+    automatic = true;
+    dates = "3d";
+    randomizedDelaySec = "6h";
+    persistent = true;
+    options = "--delete-older-than 7d";
+  };
   
   # Use a different kernel
   # boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   # Pretty boot!
-  boot.plymouth.enable = true;
-  boot.plymouth.theme = "bgrt";
-  boot.initrd.systemd.enable = true;
-  boot.initrd.verbose = false;
-  boot.consoleLogLevel = 0;
-  boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+  boot = {
+    plymouth.enable = true;
+    plymouth.theme = "bgrt";
+    initrd.systemd.enable = true;
+    initrd.verbose = false;
+    consoleLogLevel = 0;
+    kernelParams = [ "quiet" "udev.log_level=0" ];
+  };
   console.earlySetup = true;  
 
   boot.kernel.sysctl = {
@@ -32,18 +34,24 @@
 
   # Networking settings
   time.timeZone = "Europe/Moscow";
-  networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 22000 47984 47989 47990 48010 53317 ];
-  networking.firewall.allowedUDPPorts = [ 22000 47998 47999 48000 48010 53317 ];
-  networking.hosts = {
-    "127.0.0.1" = [ "mwlogin.net" ];
+  network = {
+    networkmanager.enable = true;
+    firewall.allowedTCPPorts = [ 22000 47984 47989 47990 48010 53317 ];
+    firewall.allowedUDPPorts = [ 22000 47998 47999 48000 48010 53317 ];
+    hosts = {
+      "127.0.0.1" = [ "mwlogin.net" ];
+    };
   };
   
   # Hardware settings
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  hardware.firmware = [ pkgs.rtl8761b-firmware ];
-
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    firmware = [ pkgs.rtl8761b-firmware ];
+  };
+  
   # User settings
   users.users.eli = {
     isNormalUser = true;
@@ -60,12 +68,42 @@
   };
   
   # Services and apps
-  services.avahi.publish.enable = true;
-  services.avahi.publish.userServices = true;
-  
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services = {
+    avahi = { 
+      publish.enable = true;
+      publish.userServices = true;
+    };
+    
+    displayManager = {
+      sddm.enable = true;
+      sddm.wayland.enable = true;
+      plasma6.enable = true;
+    };
+
+    resolved.enable = true;
+
+    pipewire = {
+        enable = true;
+        wireplumber.enable = true;
+        pulse.enable = true;
+        alsa.enable = true;
+    };
+    
+    openssh.enable = true;
+    printing.enable = true;
+    zerotierone = {
+      enable = true;
+      joinNetworks = [ "93afae5963c40e46" ];
+      localConf = { 
+        settings = { 
+          softwareUpdate = "disable";
+        };
+      };
+    };
+  };
+
+  # for pipewire to request realtime mode
+  security.rtkit.enable = true;
    
   services.flatpak.enable = true;
   system.fsPackages = [ pkgs.bindfs ];
@@ -94,7 +132,6 @@
     "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
     "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
   };
-  services.resolved.enable = true;
 
   fonts = {
     fontDir.enable = true;
@@ -105,39 +142,20 @@
     ];
   };
 
-  
-  services.pipewire = {
-    enable = true;
-    wireplumber.enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-  };
-  # for pipewire to request realtime 
-  security.rtkit.enable = true;
-  
-  services.openssh.enable = true;
-  services.printing.enable = true;
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [ "93afae5963c40e46" ];
-    localConf = { 
-      settings = { 
-        softwareUpdate = "disable";
-      };
+  programs = {
+    dconf.enable = true; # because gtk is just quirky and special
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+      extraPackages = with pkgs; [
+        mangohud
+      ];
+      remotePlay.openFirewall = true;
     };
   };
-  
-  programs.dconf.enable = true; # because gtk is just quirky and special
-  programs.steam = {
-    enable = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
-    extraPackages = with pkgs; [
-      mangohud
-    ];
-    remotePlay.openFirewall = true;
-  };
+
   environment.systemPackages = with pkgs; [
     # Development
     wget

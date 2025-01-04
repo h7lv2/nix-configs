@@ -28,9 +28,11 @@
   # };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.consoleMode = "max";
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = { 
+    loader.systemd-boot.enable = true;
+    loader.systemd-boot.consoleMode = "max";
+    loader.efi.canTouchEfiVariables = true;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -44,7 +46,7 @@
   # virtualisation.waydroid.enable = true;
   # systemd.services.waydroid-container.wantedBy = lib.mkForce [];
 
-  networking.hostName = "eurydice";
+  networking.hostName = "eurydice.tartarus";
 
   system.stateVersion = "24.11";
 }
