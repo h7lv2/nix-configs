@@ -24,6 +24,7 @@
     nekoray
     nil
     obs-studio
+    signal-desktop
     spotify
     syncthingtray
     telegram-desktop
