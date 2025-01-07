@@ -19,10 +19,11 @@
     glxinfo
     keepassxc
     krita
+    libreoffice-qt6-fresh
+    hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
     localsend
     moonlight-qt
     nekoray
-    nil
     obs-studio
     signal-desktop
     spotify
@@ -53,6 +54,12 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
+    extraPackages = with pkgs; [
+      nil
+      llmvPackages_18.clang-tools
+      python312Packages.python-lsp-server
+      python312Packages.python-lsp-ruff
+    ];
     settings = {
       theme = "onedark";
       editor = {
