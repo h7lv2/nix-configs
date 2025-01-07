@@ -56,7 +56,7 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       nil
-      llmvPackages_18.clang-tools
+      llvmPackages_18.clang-tools
       python312Packages.python-lsp-server
       python312Packages.python-lsp-ruff
     ];
