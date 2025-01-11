@@ -22,6 +22,7 @@
     libreoffice-qt6-fresh
     hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
     localsend
+    pinta
     moonlight-qt
     nekoray
     obs-studio
