@@ -16,7 +16,6 @@
     dosbox-staging
     electrum
     electrum-ltc
-    electron-cash
     element-desktop
     firefox
     firefoxpwa
