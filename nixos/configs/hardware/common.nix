@@ -173,6 +173,7 @@
 
     # Misc
     wl-clipboard
+    exfatprogs
     htop
   ];  
 }

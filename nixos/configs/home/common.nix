@@ -8,21 +8,28 @@
   };
 
   home.packages = with pkgs; [
+    android-studio
     clinfo
+    chromium
     bitwarden-desktop
     discord-canary
     dosbox-staging
+    electrum
+    electrum-ltc
+    electron-cash
     element-desktop
     firefox
     firefoxpwa
     floorp
     glxinfo
+    kdePackages.partitionmanager
     keepassxc
     krita
     libreoffice-qt6-fresh
     hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
     localsend
     pinta
+    haruna
     moonlight-qt
     nekoray
     obs-studio
