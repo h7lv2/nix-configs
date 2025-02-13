@@ -2,8 +2,12 @@
 
 {
   # Nix settings
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.settings.auto-optimise-store = true;
+  nix.settings = {
+    auto-optimise-store = true;
+    download-buffer-size = 536870912;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
+  
   nixpkgs.config.allowUnfree = true;
 
   nix.gc = {
@@ -15,7 +19,7 @@
   };
   
   # Use a different kernel
-  # boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   # Pretty boot!
   boot = {
@@ -30,6 +34,11 @@
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_unprivileged_port_start" = 0;
+  };
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
   };
 
   # Networking settings
@@ -50,12 +59,21 @@
       powerOnBoot = true;
     };
     firmware = [ pkgs.rtl8761b-firmware ];
+    sane = {
+      enable = true;
+      disabledDefaultBackends = [ "escl" ];
+      extraBackends = with pkgs; [
+        hplip
+        hplipWithPlugin
+        sane-airscan
+      ];
+    };
   };
   
   # User settings
   users.users.eli = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "podman" ];
+    extraGroups = [ "adbusers" "lp" "scanner" "networkmanager" "wheel" "podman" ];
   };
 
   virtualisation = {
@@ -65,13 +83,25 @@
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_full;
+        swtpm.enable = true;
+      };    
+    };
   };
   
   # Services and apps
   services = {
     avahi = { 
-      publish.enable = true;
-      publish.userServices = true;
+      enable = true;
+      nssmdns = true;
+      publish = {
+        enable = true;
+        addresses = true;
+        userServices = true;
+      };
     };
     
     displayManager = {
@@ -85,15 +115,32 @@
 
     resolved.enable = true;
 
+    ipp-usb.enable = true;
+
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        gutenprint
+        gutenprintBin
+        hplip
+        hplipWithPlugin
+      ];
+    };
+
     pipewire = {
-        enable = true;
-        wireplumber.enable = true;
-        pulse.enable = true;
-        alsa.enable = true;
+      enable = true;
+      wireplumber.enable = true;
+      pulse.enable = true;
+      alsa.enable = true;
+    };
+
+    scx = {
+      enable = true;
+      scheduler = "scx_lavd";
     };
     
     openssh.enable = true;
-    printing.enable = true;
+    udev.packages = [ pkgs.sane-airscan ];
     zerotierone = {
       enable = true;
       joinNetworks = [ "93afae5963c40e46" ];
@@ -146,6 +193,7 @@
   };
 
   programs = {
+    adb.enable = true;
     dconf.enable = true; # because gtk is just quirky and special
     steam = {
       enable = true;
@@ -157,6 +205,7 @@
       ];
       remotePlay.openFirewall = true;
     };
+    partition-manager.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -167,6 +216,9 @@
     vim
     distrobox
     virt-manager
+    virt-viewer
+    qemu_full
+    nemu
 
     # Network
     zerotierone
