@@ -168,8 +168,10 @@
       paths = with pkgs; [
         #libsForQt5.breeze-qt5  # for plasma
         kdePackages.breeze
-        kdePackages.breeze-gtk
-        # gnome.gnome-themes-extra
+        # kdePackages.breeze-gtk
+        adwaita-fonts
+        adwaita-icon-theme
+        gnome-themes-extra
       ];
       pathsToLink = [ "/share/icons" ];
     };
@@ -227,5 +229,8 @@
     wl-clipboard
     exfatprogs
     htop
+    libadwaita
+    adwaita-fonts
+    adwaita-icon-theme
   ];  
 }
