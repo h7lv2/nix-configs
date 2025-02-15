@@ -143,12 +143,7 @@
       pulse.enable = true;
       alsa.enable = true;
     };
-
-    scx = {
-      enable = true;
-      scheduler = "scx_lavd";
-    };
-    
+        
     openssh.enable = true;
     udev.packages = [ pkgs.sane-airscan ];
     zerotierone = {
