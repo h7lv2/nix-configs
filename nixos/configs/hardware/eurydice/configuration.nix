@@ -9,25 +9,25 @@
 
   boot.blacklistedKernelModules = [ "nouveau" ];
 
-  # services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  #   powerManagement.finegrained = false;
-  #   open = false;
-  #   nvidiaSettings = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
 
-  #   package = config.boot.kernelPackages.nvidiaPackages.beta;
-  #   prime = {
-  #     intelBusId = "PCI:0:2:0";
-  #     nvidiaBusId = "PCI:4:0:0";
-  #     offload = {
-  #       enable = true;
-  #       enableOffloadCmd = true;
-  #     };
-  #   };
-  # };
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    prime = {
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:4:0:0";
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot = { 

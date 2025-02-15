@@ -36,6 +36,16 @@
     "net.ipv4.ip_unprivileged_port_start" = 0;
   };
 
+  # NV Modprobe tweaks taken from cachyos
+  boot.extraModprobeConfig = ''
+    options nvidia NVreg_UsePageAttributeTable=1 \
+      NVreg_InitializeSystemMemoryAllocations=0 \
+      NVreg_DynamicPowerManagement=0x02 \
+      NVreg_EnableGpuFirmware=0 \
+      NVreg_RegistryDwords=RMIntrLockingMode=1
+    options nvidia_drm modeset=1
+  '';
+
   zramSwap = {
     enable = true;
     algorithm = "zstd";
