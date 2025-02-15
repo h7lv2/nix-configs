@@ -9,36 +9,44 @@
 
   home.packages = with pkgs; [
     android-studio
-    clinfo
-    chromium
     bitwarden-desktop
-    discord-canary
+    bottles
+    chromium
+    clinfo
+    direnv
+    discord
     dosbox-staging
-    electrum
-    electrum-ltc
     element-desktop
     firefox
     firefoxpwa
-    floorp
+    ghostty
     glxinfo
-    kdePackages.partitionmanager
+    google-chrome
+    haruna
+    hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
+    jujutsu
+    kdePackages.merkuro
     keepassxc
     krita
     libreoffice-qt6-fresh
-    hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
     localsend
-    pinta
-    haruna
+    mailspring
     moonlight-qt
     nekoray
+    obsidian
     obs-studio
+    pinta
+    qbittorrent
     signal-desktop
+    simple-scan
     spotify
     syncthingtray
     telegram-desktop
-    vscode-fhs
+    thunderbird
+    vscode
     vulkan-tools
     wayland-utils
+    whatsie
     yt-dlp
   ];
 
