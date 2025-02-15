@@ -34,8 +34,13 @@
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_unprivileged_port_start" = 0;
+    # popos settings used here https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram
+    "vm.swappiness" = 180;
+    "vm.watermark_boost_factor" = 0;
+    "vm.watermark_scale_factor" = 125;
+    "vm.page-cluster" = 0;
   };
-
+  
   # NV Modprobe tweaks taken from cachyos
   boot.extraModprobeConfig = ''
     options nvidia NVreg_UsePageAttributeTable=1 \
