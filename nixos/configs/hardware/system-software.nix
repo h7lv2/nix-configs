@@ -31,6 +31,7 @@
     virt-viewer
     vscode
     wget
+    zellij
 
     # Identity management
     bitwarden-desktop
@@ -58,6 +59,7 @@
     # Network
     localsend
     nekoray
+    mosh
     qbittorrent
     zerotierone
     
