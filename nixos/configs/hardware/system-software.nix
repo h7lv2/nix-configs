@@ -1,74 +1,74 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # Development
-    vscode
-    android-studio
-    clinfo
-    direnv
-    wget
-    ghostty
-    curl
-    jujutsu
-    git
-    vim
-    distrobox
-    virt-manager
-    virt-viewer
-    qemu_full
-
-    # Identity management
-    bitwarden-desktop
-    keepassxc
-
     # Browsers and messaging    
-    whatsie
-    telegram-desktop
     chromium
-    signal-desktop
-    google-chrome
     discord
     element-desktop
     firefox
     firefoxpwa
-
-    # Media
-    obs-studio
-    pinta
-    haruna
-    moonlight-qt
-    krita
-
-    # Network
-    qbittorrent
-    localsend
-    nekoray
-    zerotierone
+    google-chrome
+    signal-desktop
+    telegram-desktop
+    whatsie
 
     # Compatibility
     bottles
     dosbox-staging
 
-    # Office
-    thunderbird
-    syncthingtray
-    simple-scan
-    obsidian
-    libreoffice-qt6-fresh
-    hunspellDicts.ru_RU
-    kdePackages.merkuro
+    # Development
+    android-studio
+    clinfo
+    curl
+    direnv
+    distrobox
+    ghostty
+    git
+    jujutsu
+    qemu_full
+    vim
+    virt-manager
+    virt-viewer
+    vscode
+    wget
+
+    # Identity management
+    bitwarden-desktop
+    keepassxc
+
+    # Media
+    haruna
+    krita
+    moonlight-qt
+    obs-studio
+    pinta
 
     # Misc
-    yt-dlp
-    wayland-utils
-    vulkan-tools
-    wl-clipboard
+    adwaita-fonts
+    adwaita-icon-theme
     exfatprogs
     glxinfo
     htop
     libadwaita
-    adwaita-fonts
-    adwaita-icon-theme
+    vulkan-tools
+    wayland-utils
+    wl-clipboard
+    yt-dlp
+
+    # Network
+    localsend
+    nekoray
+    qbittorrent
+    zerotierone
+    
+    # Office
+    hunspellDicts.ru_RU
+    kdePackages.merkuro
+    libreoffice-qt6-fresh
+    obsidian
+    simple-scan
+    syncthingtray
+    thunderbird
   ];  
 
   programs.firefox.package = pkgs.firefox.override {
