@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./system-software.nix
+  ];
+
   # Nix settings
   nix.settings = {
     auto-optimise-store = true;
