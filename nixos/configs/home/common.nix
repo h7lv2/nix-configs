@@ -35,6 +35,41 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "Breeze";
+      background-opacity = 0.85;
+      background-blur = true;
+    };
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      themes = {
+        breezedark = {
+          fg = "#fcfcfc";
+          bg = "#232627";
+          black = "#232627";
+          red = "#ed1515";
+          green = "#11d116";
+          yellow = "#f67400";
+          blue = "#1d99f3";
+          magenta = "#9b59b6";
+          cyan = "#1abc9c";
+          white = "#fcfcfc";  
+          orange = "#f0544c";
+        };
+      };
+      theme = "breezedark";
+    };
+  };
+
   programs.bash = {
     enable = true;
     sessionVariables = {
