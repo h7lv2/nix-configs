@@ -7,56 +7,6 @@
     editor = "hx";
   };
 
-  home.packages = with pkgs; [
-    android-studio
-    bitwarden-desktop
-    bottles
-    chromium
-    clinfo
-    direnv
-    discord
-    dosbox-staging
-    element-desktop
-    firefox
-    firefoxpwa
-    ghostty
-    glxinfo
-    google-chrome
-    haruna
-    hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
-    jujutsu
-    kdePackages.merkuro
-    keepassxc
-    krita
-    libreoffice-qt6-fresh
-    localsend
-    mailspring
-    moonlight-qt
-    nekoray
-    obsidian
-    obs-studio
-    pinta
-    qbittorrent
-    signal-desktop
-    simple-scan
-    spotify
-    syncthingtray
-    telegram-desktop
-    thunderbird
-    vscode
-    vulkan-tools
-    wayland-utils
-    whatsie
-    yt-dlp
-  ];
-
-  programs.firefox.package = pkgs.firefox.override {
-    nativeMessagingHosts = with pkgs; [
-      firefoxpwa
-      kdePackages.plasma-browser-integration
-    ];
-  };
-
   home.pointerCursor = {
     package = pkgs.kdePackages.breeze;
     gtk.enable = true;
