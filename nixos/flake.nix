@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -18,10 +22,11 @@
     ];
   };
 
-  outputs = { self, nixpkgs, home-manager, chaotic, ... }: {
+  outputs = { self, nixpkgs, lix-module, home-manager, chaotic, ... }: {
     nixosConfigurations.eurydice = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        lix-module.nixosModules.default
         ./configs/hardware/eurydice/configuration.nix
         chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -36,6 +41,7 @@
     nixosConfigurations.zeus = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        lix-module.nixosModules.default
         ./configs/hardware/zeus/configuration.nix
         chaotic.nixosModules.default
         home-manager.nixosModules.home-manager
