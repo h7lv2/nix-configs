@@ -7,56 +7,6 @@
     editor = "hx";
   };
 
-  home.packages = with pkgs; [
-    android-studio
-    bitwarden-desktop
-    bottles
-    chromium
-    clinfo
-    direnv
-    discord
-    dosbox-staging
-    element-desktop
-    firefox
-    firefoxpwa
-    ghostty
-    glxinfo
-    google-chrome
-    haruna
-    hunspellDicts.ru_RU # society if home-manager had extraPackages for libreoffice
-    jujutsu
-    kdePackages.merkuro
-    keepassxc
-    krita
-    libreoffice-qt6-fresh
-    localsend
-    mailspring
-    moonlight-qt
-    nekoray
-    obsidian
-    obs-studio
-    pinta
-    qbittorrent
-    signal-desktop
-    simple-scan
-    spotify
-    syncthingtray
-    telegram-desktop
-    thunderbird
-    vscode
-    vulkan-tools
-    wayland-utils
-    whatsie
-    yt-dlp
-  ];
-
-  programs.firefox.package = pkgs.firefox.override {
-    nativeMessagingHosts = with pkgs; [
-      firefoxpwa
-      kdePackages.plasma-browser-integration
-    ];
-  };
-
   home.pointerCursor = {
     package = pkgs.kdePackages.breeze;
     gtk.enable = true;
@@ -82,6 +32,41 @@
         mouse = false;
         lsp.display-messages = true;
       };
+    };
+  };
+
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "Breeze";
+      background-opacity = 0.85;
+      background-blur = true;
+    };
+  };
+
+  programs.zellij = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      themes = {
+        breezedark = {
+          fg = "#fcfcfc";
+          bg = "#232627";
+          black = "#232627";
+          red = "#ed1515";
+          green = "#11d116";
+          yellow = "#f67400";
+          blue = "#1d99f3";
+          magenta = "#9b59b6";
+          cyan = "#1abc9c";
+          white = "#fcfcfc";  
+          orange = "#f0544c";
+        };
+      };
+      theme = "breezedark";
     };
   };
 

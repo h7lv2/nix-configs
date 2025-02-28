@@ -1,10 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./system-software.nix
+  ];
+
   # Nix settings
   nix.settings = {
     auto-optimise-store = true;
-    download-buffer-size = 536870912;
+    # download-buffer-size = 536870912;
     experimental-features = [ "nix-command" "flakes" ];
   };
   
@@ -194,53 +198,4 @@
     "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
     "/usr/local/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
   };
-
-  fonts = {
-    fontDir.enable = true;
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-emoji
-      noto-fonts-cjk-sans
-    ];
-  };
-
-  programs = {
-    adb.enable = true;
-    dconf.enable = true; # because gtk is just quirky and special
-    steam = {
-      enable = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
-      extraPackages = with pkgs; [
-        mangohud
-      ];
-      remotePlay.openFirewall = true;
-    };
-    partition-manager.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    # Development
-    wget
-    curl
-    git
-    vim
-    distrobox
-    virt-manager
-    virt-viewer
-    qemu_full
-    nemu
-
-    # Network
-    zerotierone
-
-    # Misc
-    wl-clipboard
-    exfatprogs
-    htop
-    libadwaita
-    adwaita-fonts
-    adwaita-icon-theme
-  ];  
 }
