@@ -64,8 +64,8 @@
   time.timeZone = "Europe/Moscow";
   networking = {
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 22000 47984 47989 47990 48010 53317 ];
-    firewall.allowedUDPPorts = [ 22000 47998 47999 48000 48010 53317 ];
+    firewall.allowedTCPPorts = [ 4242 22000 47984 47989 47990 48010 53317 ];
+    firewall.allowedUDPPorts = [ 4242 22000 47998 47999 48000 48010 53317 ];
     hosts = {
       "127.0.0.1" = [ "mwlogin.net" ];
     };
@@ -130,6 +130,10 @@
 
     desktopManager = {
       plasma6.enable = true;
+    };
+
+    dnclient = {
+      enable = true;
     };
 
     resolved.enable = true;

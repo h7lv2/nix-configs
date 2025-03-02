@@ -23,6 +23,28 @@
         "type": "github"
       }
     },
+    "dnclient": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "dnclient",
+        "lastModified": 1740949909,
+        "narHash": "sha256-6hvkH4M04J5+xls4GjLlC+B+DYVw4Ik14+UZK145Ruw=",
+        "owner": "h7lv2",
+        "repo": "custom-flakes",
+        "rev": "5cae8635a87e3ab291ca31700b6c874e6c2fa7eb",
+        "type": "github"
+      },
+      "original": {
+        "dir": "dnclient",
+        "owner": "h7lv2",
+        "repo": "custom-flakes",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -248,6 +270,7 @@
     "root": {
       "inputs": {
         "chaotic": "chaotic",
+        "dnclient": "dnclient",
         "home-manager": "home-manager_2",
         "lix-module": "lix-module",
         "nixpkgs": "nixpkgs_2"

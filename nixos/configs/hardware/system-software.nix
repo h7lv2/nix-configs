@@ -58,6 +58,7 @@
 
     # Network
     localsend
+    nebula
     nekoray
     mosh
     qbittorrent
