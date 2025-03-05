@@ -11,6 +11,10 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dnclient = {
+      url = "github:h7lv2/custom-flakes?dir=dnclient";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -22,7 +26,7 @@
     ];
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, chaotic, ... }: {
+  outputs = { self, nixpkgs, lix-module, home-manager, chaotic, dnclient,  ... }: {
     nixosConfigurations.eurydice = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -36,6 +40,7 @@
 
           home-manager.users.eli = import ./configs/home/eurydice.nix;
         }
+        dnclient.nixosModules.default
       ];
     };
     nixosConfigurations.zeus = nixpkgs.lib.nixosSystem {

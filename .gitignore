@@ -1,1 +1,2 @@
 nixos/configs/hardware/secrets.nix
+*.env
