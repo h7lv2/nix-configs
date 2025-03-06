@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # Browsers and messaging    
@@ -10,8 +10,9 @@
     google-chrome
     signal-desktop
     telegram-desktop
+    inputs.zen-browser.packages."${system}".default # bet
     whatsie
-
+    
     # Compatibility
     bottles
     dosbox-staging

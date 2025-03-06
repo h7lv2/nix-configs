@@ -15,6 +15,10 @@
       url = "github:h7lv2/custom-flakes?dir=dnclient";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -26,9 +30,19 @@
     ];
   };
 
-  outputs = { self, nixpkgs, lix-module, home-manager, chaotic, dnclient,  ... }: {
+  outputs = {
+    self,
+    nixpkgs,
+    lix-module,
+    home-manager,
+    chaotic,
+    dnclient,
+    zen-browser,
+    ...
+  }@inputs: {
     nixosConfigurations.eurydice = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
         lix-module.nixosModules.default
         ./configs/hardware/eurydice/configuration.nix
@@ -58,6 +72,5 @@
         }
       ];
     };
-
   };
 }
