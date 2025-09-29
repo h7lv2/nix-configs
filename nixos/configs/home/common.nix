@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
-  home.username = "eli";
-  home.homeDirectory = "/home/eli";
+  home.username = "halva";
+  home.homeDirectory = "/home/halva";
 
   systemd.user.sessionVariables = { 
     editor = "hx";

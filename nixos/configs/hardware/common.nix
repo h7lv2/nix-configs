@@ -55,7 +55,7 @@
   };
   
   # User settings
-  users.users.eli = {
+  users.users.halva = {
     isNormalUser = true;
     extraGroups = [ "adbusers" "lp" "scanner" "networkmanager" "wheel" "podman" ];
   };

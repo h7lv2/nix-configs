@@ -20,7 +20,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.eli = import ./configs/home/twinkbook.nix;
+          home-manager.users.halva = import ./configs/home/twinkbook.nix;
         }
       ];
     };
