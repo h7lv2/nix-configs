@@ -21,9 +21,9 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       nil
-      llvmPackages_18.clang-tools
-      python312Packages.python-lsp-server
-      python312Packages.python-lsp-ruff
+      clang-tools
+      python313Packages.python-lsp-server
+      python313Packages.python-lsp-ruff
     ];
     settings = {
       theme = "onedark";
@@ -77,10 +77,6 @@
     };
   };
 
-  services.syncthing = {
-    enable = true;
-  };
-
   # xdg.desktopEntries = {
   #   vesktop = {
   #     name = "Vesktop";
@@ -93,6 +89,6 @@
   #   };
   # };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
   programs.home-manager.enable = true;
 }

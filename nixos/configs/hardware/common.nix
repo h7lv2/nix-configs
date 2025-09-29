@@ -7,34 +7,13 @@
 
   # Nix settings
   nix.settings = {
-    auto-optimise-store = true;
-    # download-buffer-size = 536870912;
     experimental-features = [ "nix-command" "flakes" ];
   };
   
   nixpkgs.config.allowUnfree = true;
 
-  nix.gc = {
-    automatic = true;
-    dates = "3d";
-    randomizedDelaySec = "6h";
-    persistent = true;
-    options = "--delete-older-than 7d";
-  };
-  
   # Use a different kernel
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
-
-  # Pretty boot!
-  boot = {
-    plymouth.enable = true;
-    plymouth.theme = "bgrt";
-    initrd.systemd.enable = true;
-    initrd.verbose = false;
-    consoleLogLevel = 0;
-    kernelParams = [ "quiet" "udev.log_level=0" ];
-  };
-  console.earlySetup = true;  
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_unprivileged_port_start" = 0;
@@ -45,16 +24,6 @@
     "vm.page-cluster" = 0;
   };
   
-  # NV Modprobe tweaks taken from cachyos
-  boot.extraModprobeConfig = ''
-    options nvidia NVreg_UsePageAttributeTable=1 \
-      NVreg_InitializeSystemMemoryAllocations=0 \
-      NVreg_DynamicPowerManagement=0x02 \
-      NVreg_EnableGpuFirmware=0 \
-      NVreg_RegistryDwords=RMIntrLockingMode=1
-    options nvidia_drm modeset=1
-  '';
-
   zramSwap = {
     enable = true;
     algorithm = "zstd";
@@ -66,9 +35,6 @@
     networkmanager.enable = true;
     firewall.allowedTCPPorts = [ 4242 22000 47984 47989 47990 48010 53317 ];
     firewall.allowedUDPPorts = [ 4242 22000 47998 47999 48000 48010 53317 ];
-    hosts = {
-      "127.0.0.1" = [ "mwlogin.net" ];
-    };
   };
   
   # Hardware settings
@@ -77,7 +43,6 @@
       enable = true;
       powerOnBoot = true;
     };
-    firmware = [ pkgs.rtl8761b-firmware ];
     sane = {
       enable = true;
       disabledDefaultBackends = [ "escl" ];
@@ -102,13 +67,6 @@
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_full;
-        swtpm.enable = true;
-      };    
-    };
   };
   
   # Services and apps
@@ -130,10 +88,6 @@
 
     desktopManager = {
       plasma6.enable = true;
-    };
-
-    dnclient = {
-      enable = true;
     };
 
     resolved.enable = true;
@@ -159,15 +113,6 @@
         
     openssh.enable = true;
     udev.packages = [ pkgs.sane-airscan ];
-    zerotierone = {
-      enable = true;
-      joinNetworks = [ "93afae5963c40e46" ];
-      localConf = { 
-        settings = { 
-          softwareUpdate = "disable";
-        };
-      };
-    };
   };
 
   # for pipewire to request realtime mode

@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Browsers and messaging    
-    chromium
+    ungoogled-chromium
     discord
     element-desktop
     firefox
@@ -10,14 +10,12 @@
     google-chrome
     signal-desktop
     telegram-desktop
-    whatsie
 
     # Compatibility
     bottles
     dosbox-staging
 
     # Development
-    android-studio
     clinfo
     curl
     direnv
@@ -25,10 +23,7 @@
     ghostty
     git
     jujutsu
-    qemu_full
     vim
-    virt-manager
-    virt-viewer
     vscode
     wget
     zellij
@@ -58,11 +53,9 @@
 
     # Network
     localsend
-    nebula
     nekoray
     mosh
     qbittorrent
-    zerotierone
     
     # Office
     hunspellDicts.ru_RU
