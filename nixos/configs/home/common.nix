@@ -1,19 +1,10 @@
 { config, pkgs, ... }:
 {
-  home.username = "eli";
-  home.homeDirectory = "/home/eli";
+  home.username = "halva";
+  home.homeDirectory = "/home/halva";
 
   systemd.user.sessionVariables = { 
     editor = "hx";
-  };
-
-  home.pointerCursor = {
-    package = pkgs.kdePackages.breeze;
-    gtk.enable = true;
-    x11.enable = true;
-    
-    name = "breeze_cursors";
-    size = 24;
   };
 
   programs.helix = {
@@ -21,9 +12,9 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       nil
-      llvmPackages_18.clang-tools
-      python312Packages.python-lsp-server
-      python312Packages.python-lsp-ruff
+      clang-tools
+      python313Packages.python-lsp-server
+      python313Packages.python-lsp-ruff
     ];
     settings = {
       theme = "onedark";
@@ -48,8 +39,6 @@
 
   programs.zellij = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
     settings = {
       themes = {
         breezedark = {
@@ -77,10 +66,6 @@
     };
   };
 
-  services.syncthing = {
-    enable = true;
-  };
-
   # xdg.desktopEntries = {
   #   vesktop = {
   #     name = "Vesktop";
@@ -93,6 +78,6 @@
   #   };
   # };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
   programs.home-manager.enable = true;
 }

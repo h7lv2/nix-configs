@@ -1,23 +1,18 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, lib, ... }:
+{ 
   environment.systemPackages = with pkgs; [
     # Browsers and messaging    
-    chromium
+    ayugram-desktop
     discord
     element-desktop
     firefox
     firefoxpwa
     google-chrome
     signal-desktop
-    telegram-desktop
-    whatsie
-
-    # Compatibility
-    bottles
-    dosbox-staging
+    ungoogled-chromium
+    yandex-disk
 
     # Development
-    android-studio
     clinfo
     curl
     direnv
@@ -25,17 +20,16 @@
     ghostty
     git
     jujutsu
-    qemu_full
     vim
-    virt-manager
-    virt-viewer
     vscode
     wget
     zellij
 
     # Identity management
     bitwarden-desktop
+    ente-auth
     keepassxc
+    sbctl
 
     # Media
     haruna
@@ -58,13 +52,13 @@
 
     # Network
     localsend
-    nebula
-    nekoray
     mosh
+    nekoray
+    packet
     qbittorrent
-    zerotierone
     
     # Office
+    anytype
     hunspellDicts.ru_RU
     kdePackages.merkuro
     libreoffice-qt6-fresh
@@ -72,6 +66,7 @@
     simple-scan
     syncthingtray
     thunderbird
+    zathura
   ];  
 
   programs.firefox.package = pkgs.firefox.override {
