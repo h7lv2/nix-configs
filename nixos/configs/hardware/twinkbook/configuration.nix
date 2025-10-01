@@ -9,8 +9,11 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = { 
-    loader.systemd-boot.enable = true;
-    loader.systemd-boot.consoleMode = "max";
+    loader.systemd-boot.enable = lib.mkForce false;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+    };
     loader.efi.canTouchEfiVariables = true;
   };
 

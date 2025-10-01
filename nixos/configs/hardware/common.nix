@@ -3,6 +3,7 @@
 {
   imports = [
     ./system-software.nix
+    ./secrets.nix
   ];
 
   # Nix settings
@@ -32,10 +33,19 @@
   # Networking settings
   time.timeZone = "Europe/Moscow";
   networking = {
-    networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ 4242 22000 47984 47989 47990 48010 53317 ];
-    firewall.allowedUDPPorts = [ 4242 22000 47998 47999 48000 48010 53317 ];
+    networkmanager = {
+      enable = true;
+      settings = {
+        connectivity = {
+          uri = "http://connectivity-check.ubuntu.com";
+        };
+      };
+    };
+    firewall.allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
+    firewall.allowedUDPPorts = [ 4242 9300 22000 47998 47999 48000 48010 53317 ];
   };
+  # networking.proxy.default = "socks5://localhost:2080";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   
   # Hardware settings
   hardware = {
@@ -59,13 +69,26 @@
     isNormalUser = true;
     extraGroups = [ "adbusers" "lp" "scanner" "networkmanager" "wheel" "podman" ];
   };
-
+  
   virtualisation = {
     containers.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
+    };
+    vmware = {
+      host.enable = true;
+      host.extraConfig = ''
+        # Allow unsupported device's OpenGL and Vulkan acceleration for guest vGPU
+        mks.gl.allowUnsupportedDrivers = "TRUE"
+        mks.vk.allowUnsupportedDevices = "TRUE"
+      '';
+    };
+    virtualbox = {
+      host.enable = true;
+      host.enableKvm = true;
+      host.addNetworkInterface = false;
     };
   };
   

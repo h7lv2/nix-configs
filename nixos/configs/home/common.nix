@@ -7,15 +7,6 @@
     editor = "hx";
   };
 
-  home.pointerCursor = {
-    package = pkgs.kdePackages.breeze;
-    gtk.enable = true;
-    x11.enable = true;
-    
-    name = "breeze_cursors";
-    size = 24;
-  };
-
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -48,8 +39,6 @@
 
   programs.zellij = {
     enable = true;
-    enableBashIntegration = true;
-    enableZshIntegration = true;
     settings = {
       themes = {
         breezedark = {

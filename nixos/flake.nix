@@ -7,9 +7,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, chaotic,  ... }: {
+  outputs = { self, nixpkgs, home-manager, chaotic, lanzaboote, ... }: {
     nixosConfigurations.twinkbook = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -22,6 +28,7 @@
 
           home-manager.users.halva = import ./configs/home/twinkbook.nix;
         }
+        lanzaboote.nixosModules.lanzaboote
       ];
     };
   };

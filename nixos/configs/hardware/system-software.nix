@@ -1,15 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     # Browsers and messaging    
-    ungoogled-chromium
+    ayugram-desktop
     discord
     element-desktop
     firefox
     firefoxpwa
     google-chrome
     signal-desktop
-    telegram-desktop
+    ungoogled-chromium
+    yandex-disk
 
     # Compatibility
     bottles
@@ -30,7 +31,9 @@
 
     # Identity management
     bitwarden-desktop
+    ente-auth
     keepassxc
+    sbctl
 
     # Media
     haruna
@@ -53,8 +56,9 @@
 
     # Network
     localsend
-    nekoray
     mosh
+    nekoray
+    packet
     qbittorrent
     
     # Office
@@ -65,6 +69,7 @@
     simple-scan
     syncthingtray
     thunderbird
+    zathura
   ];  
 
   programs.firefox.package = pkgs.firefox.override {
