@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-{
+{ 
   environment.systemPackages = with pkgs; [
     # Browsers and messaging    
     ayugram-desktop
@@ -11,10 +11,6 @@
     signal-desktop
     ungoogled-chromium
     yandex-disk
-
-    # Compatibility
-    bottles
-    dosbox-staging
 
     # Development
     clinfo
@@ -62,6 +58,7 @@
     qbittorrent
     
     # Office
+    anytype
     hunspellDicts.ru_RU
     kdePackages.merkuro
     libreoffice-qt6-fresh
