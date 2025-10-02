@@ -9,13 +9,24 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
-
-      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, chaotic, lanzaboote, ... }: {
+  # nixConfig = {
+  #   extra-substituters = [
+  #     "https://niri.cachix.org"  
+  #   ];
+  #   extra-trusted-public-keys = [
+  #     "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+  #   ];
+  # };
+
+  outputs = { self, nixpkgs, home-manager, chaotic, lanzaboote, niri, ... }: {
     nixosConfigurations.twinkbook = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -29,6 +40,7 @@
           home-manager.users.halva = import ./configs/home/twinkbook.nix;
         }
         lanzaboote.nixosModules.lanzaboote
+        niri.nixosModules.niri
       ];
     };
   };
