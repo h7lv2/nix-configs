@@ -15,6 +15,7 @@
       clang-tools
       python313Packages.python-lsp-server
       python313Packages.python-lsp-ruff
+      tinymist
     ];
     settings = {
       theme = "onedark";
@@ -22,6 +23,14 @@
         line-number = "relative";
         mouse = false;
         lsp.display-messages = true;
+      };
+    };
+    languages = {
+      language-server = {
+        tinymist = {
+          command = "tinymist";
+          config.exportPdf = "onSave";
+        };
       };
     };
   };
