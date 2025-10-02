@@ -66,6 +66,8 @@
     simple-scan
     syncthingtray
     thunderbird
+    tinymist
+    typst
     zathura
   ];  
 
@@ -79,6 +81,9 @@
   programs = {
     adb.enable = true;
     dconf.enable = true; # because gtk is just quirky and special
+    niri = {
+      enable = true;
+    };
     steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
