@@ -16,24 +16,20 @@
   };
   
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     modesetting.enable = true;
     nvidiaSettings = true;
-    open = false;
+    open = true;
 
-    # powerManagement.enable = true;
-    # powerManagement.finegrained = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
   };
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [
-    "nvidia.NVreg_EnableGpuFirmware=0"
-  ];
-
-
+  
   nixpkgs.config.packageOverrides = pkgs: {
     sunshine = pkgs.sunshine.override {
       cudaSupport = true;
@@ -53,8 +49,7 @@
     autoStart = true;
   };
 
-  networking.hostName = "zeus"; # Define your hostname.
-  system.stateVersion = "24.05"; # Did you read the comment?
-
+  networking.hostName = "twinkstation"; # Define your hostname.
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
 
