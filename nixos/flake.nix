@@ -17,14 +17,14 @@
     };
   };
 
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://niri.cachix.org"  
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-  #   ];
-  # };
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"  
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 
   outputs = { self, nixpkgs, home-manager, chaotic, lanzaboote, niri, ... }: {
     nixosConfigurations.twinkbook = nixpkgs.lib.nixosSystem {
@@ -40,6 +40,20 @@
           home-manager.users.halva = import ./configs/home/twinkbook.nix;
         }
         lanzaboote.nixosModules.lanzaboote
+        niri.nixosModules.niri
+      ];
+    };
+    nixosConfigurations.twinkstation = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./configs/hardware/twinkstation/configuration.nix
+        chaotic.nixosModules.default
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.halva = import ./configs/home/twinkstation.nix;
+        }
         niri.nixosModules.niri
       ];
     };
