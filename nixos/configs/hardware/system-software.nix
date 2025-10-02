@@ -66,6 +66,7 @@
     simple-scan
     syncthingtray
     thunderbird
+    typst
     zathura
   ];  
 
