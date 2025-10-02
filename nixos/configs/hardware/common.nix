@@ -3,7 +3,6 @@
 {
   imports = [
     ./system-software.nix
-    ./secrets.nix
   ];
 
   nixpkgs.overlays = [
@@ -58,8 +57,8 @@
     firewall.allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
     firewall.allowedUDPPorts = [ 4242 9300 22000 47998 47999 48000 48010 53317 ];
   };
-  # networking.proxy.default = "socks5://localhost:2080";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.proxy.default = "socks5://localhost:2080";
+  networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   
   # Hardware settings
   hardware = {
@@ -104,8 +103,6 @@
     };
     virtualbox = {
       host.enable = true;
-      host.enableKvm = true;
-      host.addNetworkInterface = false;
     };
   };
   

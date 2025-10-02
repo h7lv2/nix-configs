@@ -52,7 +52,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.halva = import ./configs/home/twinkstation.nix;
+          home-manager.users.halva = import ./configs/home/common.nix;
         }
         niri.nixosModules.niri
       ];
