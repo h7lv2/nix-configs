@@ -4,6 +4,13 @@
   imports = [
     ./common.nix
   ];
+}
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./common.nix
+  ];
 
   home.packages = with pkgs; [
     xivlauncher

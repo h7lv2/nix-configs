@@ -85,13 +85,18 @@
       enable = true;
     };
     steam = {
+      package = pkgs.steam.override {
+        extraBwrapArgs = [ "--unsetenv TZ" ];
+      };
       enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
       extraPackages = with pkgs; [
+        kdePackages.breeze
         mangohud
       ];
+      protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
     partition-manager.enable = true;

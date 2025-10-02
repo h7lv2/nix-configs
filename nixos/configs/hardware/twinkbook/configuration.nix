@@ -24,6 +24,10 @@
   # Enable waydroid
   # virtualisation.waydroid.enable = true;
   # systemd.services.waydroid-container.wantedBy = lib.mkForce [];
+  virtualisation.virtualbox = {
+    host.enableKvm = true;
+    host.addNetworkInterface = false;
+  };
 
   networking.hostName = "twinkbook";
 
