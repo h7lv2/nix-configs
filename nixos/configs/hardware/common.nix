@@ -78,9 +78,15 @@
   };
   
   # User settings
-  users.users.halva = {
-    isNormalUser = true;
-    extraGroups = [ "adbusers" "lp" "scanner" "networkmanager" "wheel" "podman" ];
+  users.users = {
+    halva = {
+      isNormalUser = true;
+      extraGroups = [ "adbusers" "lp" "scanner" "networkmanager" "wheel" "podman" ];
+    };
+    university-testuser = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+    };
   };
   
   virtualisation = {
