@@ -43,6 +43,7 @@
     # Misc
     adwaita-fonts
     adwaita-icon-theme
+    lutris
     exfatprogs
     glxinfo
     htop
