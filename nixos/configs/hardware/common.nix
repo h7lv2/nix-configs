@@ -137,6 +137,11 @@
 
     ipp-usb.enable = true;
 
+    netbird = {
+      enable = true;
+      ui.enable = true;
+    };
+
     printing = {
       enable = true;
       drivers = with pkgs; [
