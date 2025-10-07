@@ -19,6 +19,8 @@
     distrobox
     ghostty
     git
+    jetbrains.clion
+    jetbrains.idea-community-bin
     jujutsu
     vim
     vscode
