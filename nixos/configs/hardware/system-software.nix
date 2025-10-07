@@ -17,6 +17,7 @@
     curl
     direnv
     distrobox
+    fontforge
     ghostty
     git
     jetbrains.clion
@@ -43,7 +44,14 @@
     # Misc
     adwaita-fonts
     adwaita-icon-theme
-    lutris
+    (pkgs.lutris.override {
+      extraLibraries = pkgs: [
+        pkgs.python313Packages.pysocks
+      ];
+      extraPkgs = pkgs: [
+        pkgs.python313Packages.pysocks
+      ];
+    })
     exfatprogs
     glxinfo
     htop
