@@ -25,6 +25,9 @@
   };
   
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.3.4"
+  ];
 
   # Use a different kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
