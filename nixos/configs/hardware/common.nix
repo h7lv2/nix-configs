@@ -25,6 +25,9 @@
   };
   
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "beekeeper-studio-5.3.4"
+  ];
 
   # Use a different kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -54,8 +57,14 @@
         };
       };
     };
-    firewall.allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
-    firewall.allowedUDPPorts = [ 4242 9300 22000 47998 47999 48000 48010 53317 ];
+    firewall = {
+      enabled = true;
+      allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
+      allowedTCPPortsRanges = [
+        { from = 6881; to = 6889; } # bittorrent
+      ];
+      allowedUDPPorts = [ 4242 9300 22000 47998 47999 48000 48010 53317 ];
+    };
   };
   networking.proxy.default = "socks5://localhost:2080";
   networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

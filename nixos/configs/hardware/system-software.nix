@@ -13,8 +13,10 @@
     yandex-disk
 
     # Development
+    beekeeper-studio
     clinfo
     curl
+    dbeaver-bin
     direnv
     distrobox
     fontforge

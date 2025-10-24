@@ -21,7 +21,7 @@
       theme = "onedark";
       editor = {
         line-number = "relative";
-        mouse = false;
+        mouse = true;
         lsp.display-messages = true;
       };
     };
@@ -32,6 +32,12 @@
           config.exportPdf = "onSave";
         };
       };
+      language = [
+        {
+          name = "typst";
+          soft-wrap.enable = true;
+        }
+      ];
     };
   };
 
