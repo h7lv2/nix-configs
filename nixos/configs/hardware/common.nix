@@ -29,9 +29,6 @@
     "beekeeper-studio-5.3.4"
   ];
 
-  # Use a different kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   boot.kernel.sysctl = {
     "net.ipv4.ip_unprivileged_port_start" = 0;
     # popos settings used here https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram
@@ -57,23 +54,23 @@
         };
       };
     };
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
-      allowedTCPPortRanges = [
-        { from = 6695; to = 6699; } # warframe
-        { from = 6881; to = 6889; } # bittorrent
-      ];
-      allowedUDPPorts = [ 4242
-        4950 4955 # warframe
-        9300
-        22000
-        47998 47999 48000 48010 53317 # sunshine
-      ];
-    };
+    # firewall = {
+      # enable = true;
+      # allowedTCPPorts = [ 4242 9300 22000 47984 47989 47990 48010 53317 ];
+      # allowedTCPPortRanges = [
+      #   { from = 6695; to = 6699; } # warframe
+      #   { from = 6881; to = 6889; } # bittorrent
+      # ];
+      # allowedUDPPorts = [ 4242
+      #   4950 4955 # warframe
+      #   9300
+      #   22000
+      #   47998 47999 48000 48010 53317 # sunshine
+      # ];
+    # };
   };
   networking.proxy.default = "socks5://localhost:2080";
-  networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain,192.168.1.0/24";
   
   # Hardware settings
   hardware = {
@@ -140,8 +137,10 @@
     };
     
     displayManager = {
-      sddm.enable = true;
-      sddm.wayland.enable = true;
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
     };
 
     desktopManager = {
@@ -176,6 +175,7 @@
         
     openssh.enable = true;
     udev.packages = [ pkgs.sane-airscan ];
+    zerotierone.enable = true;
   };
 
   # for pipewire to request realtime mode

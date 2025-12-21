@@ -40,7 +40,7 @@
 
   services.displayManager = {
     autoLogin.enable = true;
-    autoLogin.user = "eli";
+    autoLogin.user = "halva";
   };
 
   services.sunshine = {
@@ -49,7 +49,13 @@
     autoStart = true;
   };
 
-  networking.hostName = "twinkstation"; # Define your hostname.
+  networking = {
+    hostName = "twinkstation"; # Define your hostname.
+    firewall = {
+      enable = false;
+    };
+  };
+  
   system.stateVersion = "25.05"; # Did you read the comment?
 }
 

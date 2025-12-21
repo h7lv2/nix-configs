@@ -1,8 +1,13 @@
-{ config, pkgs, lib, ... }:
-{ 
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   environment.systemPackages = with pkgs; [
-    # Browsers and messaging    
-    ayugram-desktop
+    # Browsers and messaging
+    # ayugram-desktop
     discord
     element-desktop
     firefox
@@ -22,8 +27,9 @@
     fontforge
     ghostty
     git
+    koboldcpp
     jetbrains.clion
-    jetbrains.idea-community-bin
+    jetbrains.idea
     jujutsu
     vim
     vscode
@@ -40,7 +46,6 @@
     haruna
     krita
     moonlight-qt
-    obs-studio
     pinta
 
     # Misc
@@ -55,7 +60,7 @@
       ];
     })
     exfatprogs
-    glxinfo
+    mesa-demos
     htop
     libadwaita
     vulkan-tools
@@ -66,10 +71,10 @@
     # Network
     localsend
     mosh
-    nekoray
+    throne
     packet
     qbittorrent
-    
+
     # Office
     anytype
     hunspellDicts.ru_RU
@@ -82,7 +87,7 @@
     tinymist
     typst
     zathura
-  ];  
+  ];
 
   programs.firefox.package = pkgs.firefox.override {
     nativeMessagingHosts = with pkgs; [
@@ -112,6 +117,10 @@
       protontricks.enable = true;
       remotePlay.openFirewall = true;
     };
+    obs-studio = {
+      enable = true;
+      package = pkgs.obs-studio.override { cudaSupport = true; };
+    };
     partition-manager.enable = true;
   };
 
@@ -119,7 +128,7 @@
     fontDir.enable = true;
     packages = with pkgs; [
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
     ];
   };
